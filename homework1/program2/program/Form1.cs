@@ -23,7 +23,7 @@ namespace program
         }
 
         double a = 0,b = 0,result = 0;    //声明变量
-        string temp = null;   //用来储存输入的符号
+       // string temp = null;   //用来储存输入的符号
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,24 +38,28 @@ namespace program
             string c = textBox2.Text;
             if (c == "+"){
                 result = a + b;
-                temp = "+";
+                //temp = "+";
             }
            else if(c == "-")
             {
                 result = a - b;
-                temp = "-";
+               // temp = "-";
             }
             else if(c == "*")
             {
                 result = a * b;
-                temp = "*";
+               // temp = "*";
+            }
+            else if(c == "/")
+            {
+                result = a / b;
+                //temp = "/";
             }
             else
             {
-                result = a / b;
-                temp = "/";
+                MessageBox.Show("请输入：+, -, *,或者/");
             }
-                textBox4.Text = (a + " " + temp + " " + b + " = " + result);
+                textBox4.Text = (a + " " + textBox2.Text + " " + b + " = " + result);
 
             button1.BackColor = Color.Purple;   //点击后改变颜色
         }
@@ -78,6 +82,26 @@ namespace program
         private void textBox5_TextChanged_1(object sender, EventArgs e)
         {
             
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+            else
+                Console.WriteLine("请输入数字");
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+            else
+                Console.WriteLine("请输入数字");
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
