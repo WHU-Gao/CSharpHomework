@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "progrem1", "progrem1\progrem1.csproj", "{C172DD6B-A40A-479D-B506-A2617FC0CEDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "progrem2", "..\progrem2\progrem2.csproj", "{1E13E11D-05FE-4484-804F-6E464D91F710}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "progrem3", "..\progrem3\progrem3.csproj", "{BCA8477D-0E74-49A5-A6B4-7A63C1E1FD96}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C172DD6B-A40A-479D-B506-A2617FC0CEDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C172DD6B-A40A-479D-B506-A2617FC0CEDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C172DD6B-A40A-479D-B506-A2617FC0CEDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C172DD6B-A40A-479D-B506-A2617FC0CEDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E13E11D-05FE-4484-804F-6E464D91F710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E13E11D-05FE-4484-804F-6E464D91F710}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E13E11D-05FE-4484-804F-6E464D91F710}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E13E11D-05FE-4484-804F-6E464D91F710}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCA8477D-0E74-49A5-A6B4-7A63C1E1FD96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCA8477D-0E74-49A5-A6B4-7A63C1E1FD96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCA8477D-0E74-49A5-A6B4-7A63C1E1FD96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCA8477D-0E74-49A5-A6B4-7A63C1E1FD96}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {01B2BFC7-6EF1-416E-8253-B384DE49CA2F}
+	EndGlobalSection
+EndGlobal
