@@ -10,6 +10,7 @@ namespace progrem
 
     abstract class Shape      //父类
     {
+        
         public Shape(String name)   //构造方法
         {
             Name = name;
@@ -17,17 +18,17 @@ namespace progrem
         public string Name { get; set; }           //名字属性
         public abstract double Area { get; }   //抽象面积属性   
 
-        public override string ToString()       //输出图形面积名称和边长
+        public void  Show()       //输出图形面积名称和边长
         {
-            return string.Format("{0,-10}",Name) + "   Area: " + Area;
+            Console.WriteLine( string.Format("{0,-10}", Name) + "   Area: " + Area);
         }
     }
 
     //三角形
     class Triangle : Shape
     {
-       
-        public Triangle(string name, int width, int height) : base(name)
+
+        public Triangle(string name, double width, double height) : base(name)
         {
             Width = width;
             Height = height;
@@ -48,7 +49,7 @@ namespace progrem
     class Circle : Shape
     {
         public double Radius { get; set; }
-        public Circle( string name , double radius) : base(name)
+        public Circle(string name, double radius) : base(name)
         {
             Radius = radius;
         }
@@ -65,7 +66,7 @@ namespace progrem
     class Square : Shape
     {
         public double Side { get; set; }
-        public Square( string name, double side) :base(name)
+        public Square(string name, double side) : base(name)
         {
             Side = side;
         }
@@ -83,7 +84,7 @@ namespace progrem
     {
         public double Width { get; set; }
         public double Length { get; set; }
-        public Rectangle( string name, double width, double length) : base(name)
+        public Rectangle(string name, double width, double length) : base(name)
         {
             Width = width;
             Length = length;
@@ -96,21 +97,94 @@ namespace progrem
             }
         }
     }
+
+    //工厂
+    class ShapesFactory{
+        public static Shape InitShapes(string name)
+        {
+            if(name == "Triangle") //三角形
+            {
+                try
+                {
+                    Console.Write("请输入三角形的宽和高：");
+                    double height = Double.Parse(Console.ReadLine());
+                    double width = Double.Parse(Console.ReadLine());
+                    return new Triangle("Triangle", width,height);
+                }
+                catch
+                {
+                    Console.WriteLine("数据输入有误！");
+                    return null;
+                }
+            }
+            if(name == "Circle")   //圆形
+            {
+                try
+                {
+                    Console.Write("请输入圆的半径：");
+                    double radius = Double.Parse(Console.ReadLine());
+                    return new Circle("Circle", radius);
+                }
+                catch
+                {
+                    Console.WriteLine("数据输入有误！");
+                    return null;
+                }
+            }
+            if(name == "Square")  //正方形
+            {
+                try
+                {
+                    Console.Write("请输入正方形的边长：");
+                    double side = Double.Parse(Console.ReadLine());
+                    return new Square("Square", side);
+                }
+                catch
+                {
+                    Console.WriteLine("数据输入有误！");
+                    return null;
+                }
+            }
+            if(name == "Rectangle") //矩形
+            {
+                try
+                {
+                    Console.Write("请输入矩形的宽和长：");
+                    double height = Double.Parse(Console.ReadLine());
+                    double width = Double.Parse(Console.ReadLine());
+                    return new Rectangle("Rectangle", width, height);
+                }
+                catch
+                {
+                    Console.WriteLine("数据输入有误！");
+                    return null;
+                }
+            }
+            else
+            {             
+                return null;
+            }
+        }
+        }
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Shapes:");
-            Shape[] shapes =
+            try
             {
-                new Triangle("Triangle", 3, 4),
-                new Circle( "Circle", 3),
-                new Square("Square", 3),
-                new Rectangle( "Rectangle", 3, 4)
-            };
-
-            foreach (Shape i in shapes)
-                Console.WriteLine(i);
+                Console.WriteLine("Shapes:");
+                Console.WriteLine("Triangle(三角形), Circle(圆形), Square(正方形) and Rectangle(矩形) can be chose. ");
+                Console.Write("Please enter the name you choose: ");
+                Shape shape;
+                string name = Console.ReadLine();
+                shape = ShapesFactory.InitShapes(name);
+                shape.Show();
+            }
+            catch
+            {
+                Console.WriteLine("图片工厂中没有该图形!");
+            }
         }
     }
+
 }
