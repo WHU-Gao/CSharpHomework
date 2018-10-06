@@ -1,7 +1,0 @@
-E:\project\C#\git\homework4\Progrem\Progrem2\bin\Debug\Progrem2.exe.config
-E:\project\C#\git\homework4\Progrem\Progrem2\bin\Debug\Progrem2.exe
-E:\project\C#\git\homework4\Progrem\Progrem2\bin\Debug\Progrem2.pdb
-E:\project\C#\git\homework4\Progrem\Progrem2\obj\Debug\Progrem2.csproj.CoreCompileInputs.cache
-E:\project\C#\git\homework4\Progrem\Progrem2\obj\Debug\Progrem2.exe
-E:\project\C#\git\homework4\Progrem\Progrem2\obj\Debug\Progrem2.pdb
-E:\project\C#\git\homework4\Progrem\Progrem2\obj\Debug\Progrem2.csprojAssemblyReference.cache
