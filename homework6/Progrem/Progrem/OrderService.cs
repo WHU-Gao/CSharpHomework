@@ -14,7 +14,7 @@ namespace Progrem
     [Serializable]   //说明该类可序列化
     public class OrderService
     {
-        public List<Order> order = new List<Order>();   //定义Order的集合
+        public  List<Order> order = new List<Order>();   //定义Order的集合
 
         public OrderService()
         {
@@ -28,24 +28,29 @@ namespace Progrem
         }
 
         //创建xml文件
-        XmlSerializer xs = new XmlSerializer(typeof(List<Order>));
-        public  void Serialize()
+        static XmlSerializer xs = new XmlSerializer(typeof(List<Order>));
+        public   void Serialize(string name)
         {      
-            using(FileStream fs = new FileStream("order.xml",FileMode.Create))
+            using(FileStream fs = new FileStream(name,FileMode.Create))
             {
                 xs.Serialize(fs,order);
             }
         }
 
         //读取xml文件
-        public  void ReadXml()
+        public   List<Order> ReadXml(string name)
         {
-            using (FileStream fs = new FileStream("order.xml", FileMode.Open))
+            List<Order> temp = new List<Order>();
+            using (FileStream fs = new FileStream(name, FileMode.Open))
             {
                 List<Order> or = (List<Order>)xs.Deserialize(fs);
                 foreach (Order o in or)
-                    Console.WriteLine(o);
+                {
+                    temp.Add(o);
+                    //Console.WriteLine(o);
+                }
             }
+            return temp;
         }
 
         //获得所有订单

@@ -79,8 +79,10 @@ namespace Progrem
                     Console.WriteLine(o);
 
                 Console.WriteLine("XML文件的应用：");
-                ors.Serialize();   //创建xml文件
-                ors.ReadXml();
+                ors.Serialize("order.xml");   //创建xml文件
+                List<Order> lo = ors.ReadXml("order.xml");
+                foreach (Order o1 in lo)
+                    Console.WriteLine(o1);
 
                 Console.WriteLine("商品名为C#的订单：");
                 order = ors.GetOrderByGoodsName("C#      ");

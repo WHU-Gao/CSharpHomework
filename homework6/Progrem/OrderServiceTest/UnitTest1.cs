@@ -1,6 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.IO;
+
 namespace Progrem
 {
     [TestClass]
@@ -131,5 +134,23 @@ namespace Progrem
             Assert.IsTrue(od4 == order[0].list[0] && od4 == order[1].list[0]);
         }
 
+
+        [TestMethod]    
+        public void TestMethod5()   //检验读取xml文件是否正常
+        {
+            Order or1 = new Order(1, cu1);
+            Order or2 = new Order(2, cu2); // Customer2订单
+            or1.AddDetails(od4);
+            or2.AddDetails(od4);
+
+            OrderService os = new OrderService();
+            os.AddOrder(or1);
+            os.AddOrder(or2);
+
+            os.Serialize("orderservice.xml");
+
+            List<Order> or = os.ReadXml("orderservice.xml");
+            Assert.IsTrue(or1 == or[0] && or2 == or[1]);  //此处有一些问题不太明白
+        }
     }
 }
