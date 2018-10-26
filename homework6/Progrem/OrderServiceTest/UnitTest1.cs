@@ -6,6 +6,7 @@ using System.IO;
 
 namespace Progrem
 {
+
     [TestClass]
     public class UnitTest1    
     {
@@ -16,7 +17,6 @@ namespace Progrem
 
 
         //构造订单基本信息,用于以后的测试
-       
         OrderDetails od1 = new OrderDetails(1, "Math    ", 2, 80);   //初始化明细
         OrderDetails od2 = new OrderDetails(2, "English ", 5, 100);
         OrderDetails od3 = new OrderDetails(3, "Chinese ", 0, 120);
@@ -55,7 +55,7 @@ namespace Progrem
 
 
         [TestMethod]
-        public void TestMethod2()     //买家名字查询测试函数
+        public void TestGetOrderByCust()     //买家名字查询测试函数
         {
             Order or1 = new Order(1, cu1);
             Order or2 = new Order(2, cu2); // Customer2订单
@@ -81,7 +81,7 @@ namespace Progrem
 
 
         [TestMethod]
-        public void TestMethod3()  //测试通过id删除订单的测试函数
+        public void TestDeleteOrderByID()  //测试通过id删除订单的测试函数
         {
             Order or1 = new Order(1, cu1);
             Order or2 = new Order(2, cu2); // Customer2订单
@@ -106,7 +106,7 @@ namespace Progrem
         }
 
         [TestMethod]
-        public void TestMethod4()   //用来测试获取某一商品信息的函数
+        public void TestGetOrderByGoodsName()   //用来测试获取某一商品信息的函数
         {
             Order or1 = new Order(1, cu1);
             Order or2 = new Order(2, cu2); // Customer2订单
@@ -134,9 +134,29 @@ namespace Progrem
             Assert.IsTrue(od4 == order[0].list[0] && od4 == order[1].list[0]);
         }
 
+        [TestMethod]
+        public void TestExport()   //检验转换成xml文件是否异常
+        {
+            Order or1 = new Order(1, cu1);
+            Order or2 = new Order(2, cu2); // Customer2订单
+            or1.AddDetails(od1);    //订单1添加的条目
+            or1.AddDetails(od2);
+            or1.AddDetails(od3);
+            or1.AddDetails(od4);
+            or1.AddDetails(od5);
+
+            or2.AddDetails(od2);   //订单2添加的条目
+            or2.AddDetails(od4);
+
+            OrderService ors = new OrderService();   //订单操作
+            ors.AddOrder(or1);       //添加订单
+            ors.AddOrder(or2);
+            string name = ors.Export("people.xml");
+           Assert.AreEqual( name,"people.xml" );
+        }
 
         [TestMethod]    
-        public void TestMethod5()   //检验读取xml文件是否正常
+        public void TestImport()   //检验读取xml文件是否正常
         {
             Order or1 = new Order(1, cu1);
             Order or2 = new Order(2, cu2); // Customer2订单
@@ -147,10 +167,10 @@ namespace Progrem
             os.AddOrder(or1);
             os.AddOrder(or2);
 
-            os.Serialize("orderservice.xml");
+            string name = os.Export("orderservice.xml");
 
-            List<Order> or = os.ReadXml("orderservice.xml");
-            Assert.IsTrue(or1 == or[0] && or2 == or[1]);  //此处有一些问题不太明白
+            List<Order> order = os.Import(name);
+            Assert.AreEqual(2, order.Count);  //此处有一些问题不太明白
         }
     }
 }

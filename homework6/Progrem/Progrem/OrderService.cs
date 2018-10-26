@@ -28,19 +28,22 @@ namespace Progrem
         }
 
         //创建xml文件
-        static XmlSerializer xs = new XmlSerializer(typeof(List<Order>));
-        public   void Serialize(string name)
-        {      
-            using(FileStream fs = new FileStream(name,FileMode.Create))
+       
+        public string Export(string name)
+        {          
+             XmlSerializer xs = new XmlSerializer(typeof(List<Order>));
+            using (FileStream fs = new FileStream(name,FileMode.Create))
             {
                 xs.Serialize(fs,order);
             }
+            return name;
         }
 
         //读取xml文件
-        public   List<Order> ReadXml(string name)
+        public List<Order> Import(string name)
         {
             List<Order> temp = new List<Order>();
+             XmlSerializer xs = new XmlSerializer(typeof(List<Order>));
             using (FileStream fs = new FileStream(name, FileMode.Open))
             {
                 List<Order> or = (List<Order>)xs.Deserialize(fs);

@@ -79,8 +79,8 @@ namespace Progrem
                     Console.WriteLine(o);
 
                 Console.WriteLine("XML文件的应用：");
-                ors.Serialize("order.xml");   //创建xml文件
-                List<Order> lo = ors.ReadXml("order.xml");
+                ors.Export("order.xml");   //创建xml文件
+                List<Order> lo = ors.Import("order.xml");
                 foreach (Order o1 in lo)
                     Console.WriteLine(o1);
 
