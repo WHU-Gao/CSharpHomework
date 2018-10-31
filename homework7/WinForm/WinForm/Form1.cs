@@ -66,6 +66,7 @@ namespace WinForm
             //dataGridView1.DataMember = "list";
             int temp = int.Parse(label4.Text);
             orderDetailsBindingSource.DataSource = order[0].list;
+            
         }
 
         
@@ -126,8 +127,9 @@ namespace WinForm
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //ps:此处为刷新第二个view
             int temp = int.Parse(label4.Text);
-            orderDetailsBindingSource.DataSource = order[temp].list;
+            orderDetailsBindingSource.DataSource = order[temp-1].list;              
         }
     }
 }
