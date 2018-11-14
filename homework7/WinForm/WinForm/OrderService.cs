@@ -7,9 +7,14 @@ using System.Text;
 using System.Xml.Serialization;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.RegularExpressions;
+using System.Xml;
+using System.Xml.Xsl;
+using System.Xml.XPath;
 
 namespace WinForm
 {
+   
     //订单管理，实现查找，删除等功能
     [Serializable]   //说明该类可序列化
     public class OrderService
@@ -21,6 +26,59 @@ namespace WinForm
                 return _order;
             }
             }
+
+        //生成html文件
+        public void CreateHTML()
+        {
+            try
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.Load(@"E:\project\C#\git\homework7\WinForm\WinForm\File.xml");
+
+                XPathNavigator nav = doc.CreateNavigator();
+                nav.MoveToRoot();
+
+                XslCompiledTransform xt = new XslCompiledTransform();
+                xt.Load(@"E:\project\C#\git\homework7\WinForm\WinForm\File.xslt");
+
+                FileStream outFileStream = File.OpenWrite(@"..\..\file.html");
+                XmlTextWriter writer =
+                    new XmlTextWriter(outFileStream, System.Text.Encoding.UTF8);
+                xt.Transform(nav, null, writer);
+
+
+            }
+            catch (XmlException e)
+            {
+                Console.WriteLine("XML Exception:" + e.ToString());
+            }
+            catch (XsltException e)
+            {
+                Console.WriteLine("XSLT Exception:" + e.ToString());
+            }
+        }
+        //订单数据验证
+        public bool Test()
+        {
+            for(int i = 0; i < order.Count - 1; i++)  //判断是否重复
+            {
+                if ((order[i].ID) == (order[i + 1].ID)&&order[i].ID == null && order[i+1].ID == null)
+                    return false;
+                i++;
+            }
+
+            string pattern = @"^[0-9]{10}";    //判断订单号格式是否合理
+            string pattern1 = @"^[0-9]{11}";   //判断客户手机号是否合理
+            Regex rx = new Regex(pattern);
+            Regex rx1 = new Regex(pattern1);    
+            foreach (Order o in order) {
+                Match m = rx.Match(o.ID);
+                Match m1 = rx1.Match(o.Cust.Number);
+                if (m.Success && m1.Success)
+                    return true;
+            }       
+            return false;
+        }
 
         public OrderService()
         {
@@ -34,14 +92,14 @@ namespace WinForm
         }
 
         //创建xml文件
-       
         public string Export(string name)
         {          
              XmlSerializer xs = new XmlSerializer(typeof(List<Order>));
-            using (FileStream fs = new FileStream(name,FileMode.Create))
-            {
+            using (FileStream fs = new FileStream(@"E:\project\C#\git\homework7\WinForm\WinForm\File.xml", FileMode.Create))
+            {         
                 xs.Serialize(fs,order);
             }
+            
             return name;
         }
 
@@ -50,7 +108,7 @@ namespace WinForm
         {
             List<Order> temp = new List<Order>();
              XmlSerializer xs = new XmlSerializer(typeof(List<Order>));
-            using (FileStream fs = new FileStream(name, FileMode.Open))
+            using (FileStream fs = new FileStream(name, FileMode.Create))       
             {
                 List<Order> or = (List<Order>)xs.Deserialize(fs);
                 foreach (Order o in or)
@@ -91,7 +149,7 @@ namespace WinForm
             //foreach (Order s in order)
             //    or.Add(s);
             //return or;
-            var m = from n in order where n.ID != id select n;
+            var m = from n in order where int.Parse(n.ID )!= id select n;
             foreach (Order x in m)
                 or.Add(x);
             return or;

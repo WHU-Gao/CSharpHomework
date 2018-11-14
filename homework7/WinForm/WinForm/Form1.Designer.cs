@@ -34,6 +34,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -46,22 +47,23 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.orderDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.iDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.orderDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.custDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.countDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.orderDetailsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDetailsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -88,11 +90,11 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(218, 13);
+            this.textBox1.Location = new System.Drawing.Point(191, 13);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(85, 25);
+            this.textBox1.Size = new System.Drawing.Size(112, 25);
             this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "1";
+            this.textBox1.Text = "20181112001";
             // 
             // label1
             // 
@@ -120,6 +122,16 @@
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "ID", true));
+            this.label7.Location = new System.Drawing.Point(16, 110);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(15, 15);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "1";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -132,7 +144,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 10F);
-            this.label5.Location = new System.Drawing.Point(37, 110);
+            this.label5.Location = new System.Drawing.Point(115, 110);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(93, 17);
             this.label5.TabIndex = 4;
@@ -154,6 +166,7 @@
             this.dataGridView2.RowTemplate.Height = 27;
             this.dataGridView2.Size = new System.Drawing.Size(568, 113);
             this.dataGridView2.TabIndex = 3;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // label4
             // 
@@ -181,9 +194,11 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,
-            this.custDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.bindingSource1;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 4);
+            this.nameDataGridViewTextBoxColumn1,
+            this.countDataGridViewTextBoxColumn1,
+            this.priceDataGridViewTextBoxColumn1});
+            this.dataGridView1.DataSource = this.orderDetailsBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(13, 8);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 27;
             this.dataGridView1.Size = new System.Drawing.Size(564, 96);
@@ -254,19 +269,9 @@
             this.label2.Text = "功能区：";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // label7
+            // bindingSource1
             // 
-            this.label7.AutoSize = true;
-            this.label7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "ID", true));
-            this.label7.Location = new System.Drawing.Point(16, 110);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(15, 15);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "1";
-            // 
-            // orderDetailsBindingSource
-            // 
-            this.orderDetailsBindingSource.DataSource = typeof(WinForm.OrderDetails);
+            this.bindingSource1.DataSource = typeof(WinForm.Order);
             // 
             // iDDataGridViewTextBoxColumn1
             // 
@@ -292,9 +297,9 @@
             this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
             this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
             // 
-            // bindingSource1
+            // orderDetailsBindingSource
             // 
-            this.bindingSource1.DataSource = typeof(WinForm.Order);
+            this.orderDetailsBindingSource.DataSource = typeof(WinForm.OrderDetails);
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -302,11 +307,23 @@
             this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
             this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
             // 
-            // custDataGridViewTextBoxColumn
+            // priceDataGridViewTextBoxColumn1
             // 
-            this.custDataGridViewTextBoxColumn.DataPropertyName = "Cust";
-            this.custDataGridViewTextBoxColumn.HeaderText = "Cust";
-            this.custDataGridViewTextBoxColumn.Name = "custDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn1.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn1.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn1.Name = "priceDataGridViewTextBoxColumn1";
+            // 
+            // countDataGridViewTextBoxColumn1
+            // 
+            this.countDataGridViewTextBoxColumn1.DataPropertyName = "Count";
+            this.countDataGridViewTextBoxColumn1.HeaderText = "Count";
+            this.countDataGridViewTextBoxColumn1.Name = "countDataGridViewTextBoxColumn1";
+            // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
             // 
             // Form1
             // 
@@ -327,8 +344,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.orderDetailsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDetailsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -337,14 +354,12 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridView2;
@@ -359,8 +374,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource orderDetailsBindingSource;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn custDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn countDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn1;
     }
 }
 

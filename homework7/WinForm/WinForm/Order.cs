@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace WinForm
@@ -14,7 +15,7 @@ namespace WinForm
 
         }
 
-        public int ID { set; get; }   //订单ID
+        public string ID { set; get; }   //订单ID
 
         public Customers Cust { set; get; }  // 买家属性
 
@@ -26,12 +27,14 @@ namespace WinForm
                 return _list;
             }
         }
-        public Order(int id, Customers cust)   //定义构造函数，包含顾客等信息
+        public Order(string id, Customers cust)   //定义构造函数，包含顾客等信息
         {
-            ID = id;
-            Cust = cust;
+           
+                ID = id;
+                Cust = cust;
         }
-
+       
+       
         public void AddDetails(OrderDetails od)     //添加明细
         {
             if (this.list.Contains(od))
