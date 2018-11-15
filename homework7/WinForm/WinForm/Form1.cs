@@ -38,7 +38,7 @@ namespace WinForm
             Customers cu1 = new Customers(1, "Customer1", "15327402588");    //顾客
             Customers cu2 = new Customers(2, "Customer2","13279526774");
             //Customers cu3 = new Customers(3, "Customer3");
-            Order or1 = new Order("20181112001", cu1);     //订单
+            Order or1 = new Order("20181213001", cu1);     //订单
             Order or2 = new Order("20181112002", cu2);
             //Order or3 = new Order(3, cu3);
 

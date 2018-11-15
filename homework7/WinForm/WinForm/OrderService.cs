@@ -67,17 +67,19 @@ namespace WinForm
                 i++;
             }
 
-            string pattern = @"^[0-9]{10}";    //判断订单号格式是否合理
-            string pattern1 = @"^[0-9]{11}";   //判断客户手机号是否合理
+            string pattern = @"^\s*2[0-9]{3}(0?[1-9]|1[0-2])((0?[1-9])|((1|2)[0-9])|30|31)$";    //判断订单号格式是否合理
+            //日验证：((0?[1-9])|((1|2)[0-9])|30|31)
+            //月验证：(0?[1-9]|1[0-2])
+            string pattern1 = @"^(\+86|0086)?\s*1[34578]\d{9}$";   //判断客户手机号是否合理
             Regex rx = new Regex(pattern);
             Regex rx1 = new Regex(pattern1);    
             foreach (Order o in order) {
                 Match m = rx.Match(o.ID);
                 Match m1 = rx1.Match(o.Cust.Number);
-                if (m.Success && m1.Success)
-                    return true;
+                if (!m.Success || !m1.Success)
+                    return false;
             }       
-            return false;
+            return true;
         }
 
         public OrderService()
