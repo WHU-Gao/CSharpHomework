@@ -170,7 +170,7 @@ namespace Progrem
             string name = os.Export("orderservice.xml");
 
             List<Order> order = os.Import(name);
-            Assert.AreEqual(2, order.Count);  //此处有一些问题不太明白
+            Assert.AreEqual(2, order.Count);  
         }
     }
 }
