@@ -56,11 +56,12 @@ namespace WinForm
             OrderService ors = new OrderService();   //订单操作
             ors.AddOrder(or1);       //添加订单
             ors.AddOrder(or2);
-            if (!ors.Test())
-            {
-                MessageBox.Show("The ID is not right!");
-                return;
-            }
+
+            //if (!ors.Test())
+            //{
+            //    MessageBox.Show("The ID is not right!");
+            //    return;
+            //}
             ors.Export("File");  //转换为xml文件
             ors.CreateHTML();  //生成html文件
             InitializeComponent();

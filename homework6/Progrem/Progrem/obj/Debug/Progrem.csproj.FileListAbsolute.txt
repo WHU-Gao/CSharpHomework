@@ -1,0 +1,7 @@
+E:\project\C#\git\homework6\Progrem\Progrem\bin\Debug\Progrem.exe.config
+E:\project\C#\git\homework6\Progrem\Progrem\bin\Debug\Progrem.exe
+E:\project\C#\git\homework6\Progrem\Progrem\bin\Debug\Progrem.pdb
+E:\project\C#\git\homework6\Progrem\Progrem\obj\Debug\Progrem.csprojAssemblyReference.cache
+E:\project\C#\git\homework6\Progrem\Progrem\obj\Debug\Progrem.csproj.CoreCompileInputs.cache
+E:\project\C#\git\homework6\Progrem\Progrem\obj\Debug\Progrem.exe
+E:\project\C#\git\homework6\Progrem\Progrem\obj\Debug\Progrem.pdb
