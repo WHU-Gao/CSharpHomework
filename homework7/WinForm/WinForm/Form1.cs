@@ -66,13 +66,11 @@ namespace WinForm
             InitializeComponent();
 
             bindingSource1.DataSource = order;
-                     
-           //绑定查询条件
+            //绑定查询条件
             textBox1.DataBindings.Add("Text", this, "Num");
-            //dataGridView1.DataMember = "list";
-            int temp = int.Parse(label4.Text);
-            orderDetailsBindingSource.DataSource = order[0].list;
-            
+
+            //int temp = int.Parse(label4.Text);
+            bindingSource2.DataSource = order[0].list; ;
         }
         
 
@@ -135,8 +133,8 @@ namespace WinForm
             //ps:此处为刷新第二个view
             string temp = label4.Text;
             string temp1 = temp.Substring(8, 3);   //截取字符串
-           
-            orderDetailsBindingSource.DataSource = order[int.Parse(temp1) - 1].list;              
+
+            bindingSource2.DataSource = order[int.Parse(temp1) - 1].list;              
         }
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
