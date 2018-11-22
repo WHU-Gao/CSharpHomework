@@ -1,0 +1,14 @@
+E:\project\C#\homework8\SimpleCrawler\SimpleCrawler\bin\Debug\SimpleCrawler.exe.config
+E:\project\C#\homework8\SimpleCrawler\SimpleCrawler\bin\Debug\SimpleCrawler.exe
+E:\project\C#\homework8\SimpleCrawler\SimpleCrawler\bin\Debug\SimpleCrawler.pdb
+E:\project\C#\homework8\SimpleCrawler\SimpleCrawler\obj\Debug\SimpleCrawler.csproj.CoreCompileInputs.cache
+E:\project\C#\homework8\SimpleCrawler\SimpleCrawler\obj\Debug\SimpleCrawler.exe
+E:\project\C#\homework8\SimpleCrawler\SimpleCrawler\obj\Debug\SimpleCrawler.pdb
+E:\project\C#\homework8\SimpleCrawler\SimpleCrawler\obj\Debug\SimpleCrawler.csprojAssemblyReference.cache
+E:\project\C#\git\homework8\SimpleCrawler\SimpleCrawler\bin\Debug\SimpleCrawler.exe.config
+E:\project\C#\git\homework8\SimpleCrawler\SimpleCrawler\bin\Debug\SimpleCrawler.exe
+E:\project\C#\git\homework8\SimpleCrawler\SimpleCrawler\bin\Debug\SimpleCrawler.pdb
+E:\project\C#\git\homework8\SimpleCrawler\SimpleCrawler\obj\Debug\SimpleCrawler.csprojAssemblyReference.cache
+E:\project\C#\git\homework8\SimpleCrawler\SimpleCrawler\obj\Debug\SimpleCrawler.csproj.CoreCompileInputs.cache
+E:\project\C#\git\homework8\SimpleCrawler\SimpleCrawler\obj\Debug\SimpleCrawler.exe
+E:\project\C#\git\homework8\SimpleCrawler\SimpleCrawler\obj\Debug\SimpleCrawler.pdb
