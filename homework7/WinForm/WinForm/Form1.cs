@@ -10,8 +10,11 @@ using System.Windows.Forms;
 
 namespace WinForm
 {
+    
     public partial class Form1 : Form
     {
+        public static int close = 0;
+
         public List<Order> order = new List<Order>();
         private string num = "20181112000";
          public string Num
@@ -24,8 +27,7 @@ namespace WinForm
             {             
                 num = value;
             }
-        }
-
+        }   
         public Form1()
         {
             //订单信息
@@ -38,7 +40,7 @@ namespace WinForm
             Customers cu1 = new Customers(1, "Customer1", "15327402588");    //顾客
             Customers cu2 = new Customers(2, "Customer2","13279526774");
             //Customers cu3 = new Customers(3, "Customer3");
-            Order or1 = new Order("20181213001", cu1);     //订单
+            Order or1 = new Order("20181113001", cu1);     //订单
             Order or2 = new Order("20181112002", cu2);
             //Order or3 = new Order(3, cu3);
 
@@ -56,15 +58,15 @@ namespace WinForm
             OrderService ors = new OrderService();   //订单操作
             ors.AddOrder(or1);       //添加订单
             ors.AddOrder(or2);
-
             if (!ors.Test())
             {
                 MessageBox.Show("The ID is not right!");
                 return;
             }
-
             ors.Export("File");  //转换为xml文件
-            ors.CreateHTML();  //生成html文件
+
+            //ors.CreateHTML();  //生成html文件
+
             InitializeComponent();
 
             bindingSource1.DataSource = order;
@@ -97,25 +99,38 @@ namespace WinForm
 
         }
 
+        public static Form1Edit form1 = new Form1Edit(new Order());
+
         private void button3_Click(object sender, EventArgs e)    //新建订单
         {
-            OrderDetails od3 = new OrderDetails(3, "Chinese ", 0, 120);
-            Customers cu3 = new Customers(3, "Customer3", "1594687223");
-            Order or3 = new Order("20181112003", cu3);
-            or3.AddDetails(od3);
             
-            Form1 fo = new Form1();
-            fo.order.Add(or3);
-            fo.Show();
+            form1.ShowDialog();
+            
+            //if (close == 1)  //close为1关闭窗体
+            //{
+            //    form1.Close();
+            //    close = 0;
+            //}
+
+            Order order1 = form1.GetResult();
+            if (order1 != null)
+            {
+                order.Add(order1);  
+                bindingSource1.ResetBindings(false);  //重新绑定
+                //textBox1.Text = order1.ToString();
+                bindingSource2.ResetBindings(false);
+            }             
         }
 
         private void button2_Click(object sender, EventArgs e)   //删除订单
         {
-            
-            string temp =textBox2.Text;
-            Form1 f = new Form1();
-            f.order.RemoveAll(o => o.ID == temp);
-            f.Show();
+            Order or = (Order)bindingSource1.Current;
+            if (or != null)
+            {
+               
+                order.RemoveAll(o => (o.ID == or.ID));
+                bindingSource1.ResetBindings(false);  //重新绑定
+            }
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -125,9 +140,9 @@ namespace WinForm
 
         private void button4_Click(object sender, EventArgs e)   //修改订单一某一明细数量
         {
-            Form1 f = new Form1();
-            f.order[0].list[0].Count = 10;
-            f.Show();
+            //Form1Edit form = new Form1Edit((Order)bindingSource1.Current);
+            form1 = new Form1Edit((Order)bindingSource1.Current);
+            form1.ShowDialog();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
