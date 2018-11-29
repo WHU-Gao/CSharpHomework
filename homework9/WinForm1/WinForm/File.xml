@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<ArrayOfOrder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Order>
+    <_list>
+      <OrderDetails>
+        <ID>1</ID>
+        <Name>Math    </Name>
+        <Count>2</Count>
+        <Price>80</Price>
+      </OrderDetails>
+      <OrderDetails>
+        <ID>3</ID>
+        <Name>Chinese </Name>
+        <Count>4</Count>
+        <Price>120</Price>
+      </OrderDetails>
+    </_list>
+    <ID>20181213001</ID>
+    <Cust>
+      <ID>1</ID>
+      <Name>Customer1</Name>
+      <Number>15327402588</Number>
+    </Cust>
+    <list>
+      <OrderDetails>
+        <ID>1</ID>
+        <Name>Math    </Name>
+        <Count>2</Count>
+        <Price>80</Price>
+      </OrderDetails>
+      <OrderDetails>
+        <ID>3</ID>
+        <Name>Chinese </Name>
+        <Count>4</Count>
+        <Price>120</Price>
+      </OrderDetails>
+    </list>
+  </Order>
+  <Order>
+    <_list>
+      <OrderDetails>
+        <ID>2</ID>
+        <Name>English </Name>
+        <Count>5</Count>
+        <Price>100</Price>
+      </OrderDetails>
+      <OrderDetails>
+        <ID>4</ID>
+        <Name>C#      </Name>
+        <Count>1</Count>
+        <Price>90</Price>
+      </OrderDetails>
+    </_list>
+    <ID>20181112002</ID>
+    <Cust>
+      <ID>2</ID>
+      <Name>Customer2</Name>
+      <Number>13279526774</Number>
+    </Cust>
+    <list>
+      <OrderDetails>
+        <ID>2</ID>
+        <Name>English </Name>
+        <Count>5</Count>
+        <Price>100</Price>
+      </OrderDetails>
+      <OrderDetails>
+        <ID>4</ID>
+        <Name>C#      </Name>
+        <Count>1</Count>
+        <Price>90</Price>
+      </OrderDetails>
+    </list>
+  </Order>
+</ArrayOfOrder>
